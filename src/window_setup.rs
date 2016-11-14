@@ -1,5 +1,8 @@
+use glib::translate::ToGlibPtr;
+use gobject_sys;
 use gtk;
 use gtk::prelude::*;
+
 
 // Basic Setup des Fensters
 fn window_setup(window: &gtk::Window) {
@@ -32,11 +35,12 @@ pub fn index(builder: &gtk::Builder, title: &'static str) {
 
     label_window_setup_title.set_text(title);
 
-    button_setup.connect_clicked(move |_| {
+    let signal_id = button_setup.connect_clicked(move |_| {
         println!("{}", title);
     });
 
-    button_back.connect_clicked(clone!( window => move |_| {
+    button_back.connect_clicked(clone!(window, button_setup, signal_id => move |_| {
+        unsafe { gobject_sys::g_signal_handler_disconnect(button_setup.to_glib_none().0, signal_id); }
         window.hide();
     }));
 

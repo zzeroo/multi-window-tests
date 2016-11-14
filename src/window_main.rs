@@ -30,7 +30,8 @@ pub fn index() {
         return;
     }
 
-    let builder = gtk::Builder::new_from_string(include_str!("main.ui"));
+    let builder = gtk::Builder::new();
+    let _ = builder.add_from_string(include_str!("main.ui"));
     let window: gtk::Window = builder.get_object("window_main").unwrap();
     let label_window_main_title: gtk::Label = builder.get_object("label_window_main_title").unwrap();
     let button_type_a: gtk::Button = builder.get_object("button_type_a").unwrap();
