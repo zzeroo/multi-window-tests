@@ -22,7 +22,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button_typeA">
+          <object class="GtkButton" id="button_type_a">
             <property name="label" translatable="yes">TypeA</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -35,7 +35,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button_typeB">
+          <object class="GtkButton" id="button_type_b">
             <property name="label" translatable="yes">TypeB</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
