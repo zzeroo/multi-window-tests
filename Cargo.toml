@@ -3,8 +3,7 @@ name = "multi-window-tests"
 version = "0.1.0"
 authors = ["Stefan Müller <s.mueller@it.kls-glt.de>"]
 
-[dependencies.gtk]
-version = "0.1.0"
-features = ["v3_16"]
-
 [dependencies]
+gtk = { git = "https://github.com/gtk-rs/gtk.git" }
+glib = { git = "https://github.com/gtk-rs/glib.git" }
+gobject-sys = { git = "https://github.com/gtk-rs/sys" }
