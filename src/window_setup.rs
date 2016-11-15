@@ -40,7 +40,12 @@ pub fn index(builder: &gtk::Builder, title: &'static str) {
     });
 
     button_back.connect_clicked(clone!(window, button_setup, signal_id => move |_| {
-        unsafe { gobject_sys::g_signal_handler_disconnect(button_setup.to_glib_none().0, signal_id); }
+        unsafe {
+            let instance = button_setup.to_glib_none().0;
+            if gobject_sys::g_signal_handler_is_connected(instance, signal_id) == 1 {
+                gobject_sys::g_signal_handler_disconnect(instance, signal_id);
+            }
+        }
         window.hide();
     }));
 
